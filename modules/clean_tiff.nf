@@ -1,10 +1,10 @@
 process clean_tiff {
   input:
-    tuple val(meta), file(image) 
+    tuple val(meta), file(image)
   output:
     tuple val(meta), file('*_cleaned*')
   publishDir "$params.outdir/", mode: 'copy', overwrite: true
-  stub: 
+  stub:
   """
   touch image_cleaned.ome.tiff
   """

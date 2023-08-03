@@ -21,10 +21,10 @@ params.rm_svs_macro = false         // Remove macro image in SVS files
 params.rm_svs_label = true          // Remove label image in SVS files
 params.rm_ome_sa    = true          // Remove structural annotations in OME-XML files
 
-if (params.input) { 
-  params.input = file(params.input) 
-  } else { 
-    exit 1, 'Input samplesheet not specified!' 
+if (params.input) {
+  params.input = file(params.input)
+  } else {
+    exit 1, 'Input samplesheet not specified!'
   }
 
 /*

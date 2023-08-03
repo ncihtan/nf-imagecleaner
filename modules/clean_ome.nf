@@ -1,9 +1,9 @@
 process clean_ome {
   input:
-    tuple val(meta), file(image) 
+    tuple val(meta), file(image)
   output:
     tuple val(meta), file(image)
-  stub: 
+  stub:
   """
   touch image_cleaned.ome.tiff
   """

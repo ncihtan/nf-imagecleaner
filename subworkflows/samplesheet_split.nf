@@ -9,7 +9,7 @@ workflow SAMPLESHEET_SPLIT {
     Channel
         .fromPath(samplesheet)
         .splitCsv (header:true, sep:',' )
-        .branch { 
+        .branch {
             row ->
             syn: row.image =~ /syn\:\/\/syn\d+/
             other: true
@@ -18,8 +18,8 @@ workflow SAMPLESHEET_SPLIT {
 
         // Make meta map from the samplesheet where local
         branched.other
-        .map { 
-            row -> 
+        .map {
+            row ->
             def meta = [:]
             meta.id = file(row.image).simpleName
             image = file(row.image)
@@ -29,8 +29,8 @@ workflow SAMPLESHEET_SPLIT {
 
         /// Where is a synapse ID fetch with synapse_get
         branched.syn
-        .map { 
-            row -> 
+        .map {
+            row ->
             def meta = [:]
             meta.id = row.image.replace('syn://', '')
             meta
@@ -45,7 +45,7 @@ workflow SAMPLESHEET_SPLIT {
             }
             .set{ images }
 
-    emit: 
+    emit:
         ome = images.ome
         svs = images.svs
         other = images.other

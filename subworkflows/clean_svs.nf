@@ -6,7 +6,7 @@ include { clean_svs } from "../modules/clean_svs.nf"
 workflow CLEAN_SVS {
   take:
   images
-  
+
   main:
 
   if ( params.rm_svs_label ) {
@@ -18,6 +18,6 @@ workflow CLEAN_SVS {
     clean_svs.out.set{cleaned}
   }
 
-  emit: 
+  emit:
   cleaned
 }
