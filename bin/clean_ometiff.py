@@ -7,19 +7,21 @@ import os
 
 input = sys.argv[1]
 
+
 def split_all_ext(filename):
     basename = filename
     extensions = []
-    while '.' in basename:
+    while "." in basename:
         basename, ext = os.path.splitext(basename)
         extensions.append(ext)
-    return basename, ''.join(reversed(extensions))
+    return basename, "".join(reversed(extensions))
 
-insert_string = '_cleaned'
+
+insert_string = "_cleaned"
 
 basename, all_ext = split_all_ext(input)
 
-new_filename = f'{basename}{insert_string}{all_ext}'
+new_filename = f"{basename}{insert_string}{all_ext}"
 print(new_filename)
 
 ome = ome_types.from_tiff(input)
@@ -31,10 +33,6 @@ for i, exp in enumerate(ome.experimenters):
 for i, img in enumerate(ome.images):
     ome.images[i].acquisition_date = None
 
-set_list=[(tifftools.Tag.IMAGEDESCRIPTION, ome_types.to_xml(ome))]
+set_list = [(tifftools.Tag.IMAGEDESCRIPTION, ome_types.to_xml(ome))]
 
-tifftools.tiff_set(
-    input,
-    overwrite = True, 
-    setlist=set_list
-    )
+tifftools.tiff_set(input, overwrite=True, setlist=set_list)

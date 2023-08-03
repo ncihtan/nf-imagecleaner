@@ -6,44 +6,47 @@ import os
 
 import argparse
 
-parser=argparse.ArgumentParser()
+parser = argparse.ArgumentParser()
 
 parser.add_argument("input")
-parser.add_argument("--suffix",default= '_cleaned')
+parser.add_argument("--suffix", default="_cleaned")
 
-args=parser.parse_args()
+args = parser.parse_args()
 
 
 def split_all_ext(filename):
     basename = filename
     extensions = []
-    while '.' in basename:
+    while "." in basename:
         basename, ext = os.path.splitext(basename)
         extensions.append(ext)
-    return basename, ''.join(reversed(extensions))
+    return basename, "".join(reversed(extensions))
+
 
 basename, all_ext = split_all_ext(args.input)
 
-new_filename = f'{basename}{args.suffix}{all_ext}'
+new_filename = f"{basename}{args.suffix}{all_ext}"
 print(new_filename)
 
 
-unest_list = ['DateTime',
-              'NDPI_ScanTime',
-              'NDPI_WriteTime',
-              'Artist',
-              'HostComputer',
-              'WangAnnotation',
-              'WriterSerialNumber',
-              'MDLabName',
-              'MDPrepDate',
-              'MDSampleInfo',
-              'Software']
+unest_list = [
+    "DateTime",
+    "NDPI_ScanTime",
+    "NDPI_WriteTime",
+    "Artist",
+    "HostComputer",
+    "WangAnnotation",
+    "WriterSerialNumber",
+    "MDLabName",
+    "MDPrepDate",
+    "MDSampleInfo",
+    "Software",
+]
 
 tifftools.tiff_set(
     args.input,
-    output = new_filename,
-    overwrite = False, 
-    unset=unest_list, 
-    #setlist=set_list
-    )
+    output=new_filename,
+    overwrite=False,
+    unset=unest_list,
+    # setlist=set_list
+)
