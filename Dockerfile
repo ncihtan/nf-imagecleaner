@@ -21,6 +21,7 @@ RUN set -ex \
     && apt-get update \
     && apt-get upgrade -y \
     # Install dependencies
+		&& apt-get install procps \
     && pip install -r requirements.txt \
     # Clean up
     && apt-get autoremove -y \
