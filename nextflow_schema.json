@@ -29,7 +29,35 @@
                     "type": "string",
                     "format": "directory-path",
                     "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
-                    "fa_icon": "fas fa-folder-open"
+                    "fa_icon": "fas fa-folder-open",
+                    "help_text": ""
+                }
+            }
+        },
+        "pipeline_options": {
+            "title": "Pipeline options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "outsuffix": {
+                    "type": "string",
+                    "default": "_cleaned",
+                    "description": "Suffix for output files (default: _cleaned)"
+                },
+                "rm_svs_label": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Boolean indicating whether to remove the label image in SVS files (default: true)"
+                },
+                "rm_svs_macro": {
+                    "type": "boolean",
+                    "description": "Boolean indicating whether to remove the macro image in SVS files (default: true)"
+                },
+                "rm_ome_sa": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Boolean indicating whether to remove structural annotations in OME-XML files (default: true)"
                 }
             }
         }
@@ -37,20 +65,9 @@
     "allOf": [
         {
             "$ref": "#/definitions/input_output_options"
-        }
-    ],
-    "properties": {
-        "outsuffix": {
-            "type": "string",
-            "default": "_cleaned"
         },
-        "rm_svs_label": {
-            "type": "string",
-            "default": "true"
-        },
-        "rm_ome_sa": {
-            "type": "string",
-            "default": "true"
+        {
+            "$ref": "#/definitions/pipeline_options"
         }
-    }
+    ]
 }
