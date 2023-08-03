@@ -8,8 +8,14 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     # cache is useless in docker image, so disable to reduce image size
     PIP_NO_CACHE_DIR=1
 
+WORKDIR /app
+
+COPY requirements.txt ./
+
 ### Final stage
 FROM python:3.11-slim as final
+
+WORKDIR /
 
 COPY --from=build /requirements.txt .
 
