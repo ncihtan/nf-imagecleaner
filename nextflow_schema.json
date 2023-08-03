@@ -1,73 +1,70 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
-    "title": ". pipeline parameters",
-    "description": "",
-    "type": "object",
-    "definitions": {
-        "input_output_options": {
-            "title": "Input/output options",
-            "type": "object",
-            "fa_icon": "fas fa-terminal",
-            "description": "Define where the pipeline should find input data and save output data.",
-            "required": [
-                "input",
-                "outdir"
-            ],
-            "properties": {
-                "input": {
-                    "type": "string",
-                    "format": "file-path",
-                    "exists": true,
-                    "mimetype": "text/csv",
-                    "pattern": "^\\S+\\.csv$",
-                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
-                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
-                    "fa_icon": "fas fa-file-csv"
-                },
-                "outdir": {
-                    "type": "string",
-                    "format": "directory-path",
-                    "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
-                    "fa_icon": "fas fa-folder-open",
-                    "help_text": ""
-                }
-            }
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
+  "title": ". pipeline parameters",
+  "description": "",
+  "type": "object",
+  "definitions": {
+    "input_output_options": {
+      "title": "Input/output options",
+      "type": "object",
+      "fa_icon": "fas fa-terminal",
+      "description": "Define where the pipeline should find input data and save output data.",
+      "required": ["input", "outdir"],
+      "properties": {
+        "input": {
+          "type": "string",
+          "format": "file-path",
+          "exists": true,
+          "mimetype": "text/csv",
+          "pattern": "^\\S+\\.csv$",
+          "description": "Path to comma-separated file containing information about the samples in the experiment.",
+          "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
+          "fa_icon": "fas fa-file-csv"
         },
-        "pipeline_options": {
-            "title": "Pipeline options",
-            "type": "object",
-            "description": "",
-            "default": "",
-            "properties": {
-                "outsuffix": {
-                    "type": "string",
-                    "default": "_cleaned",
-                    "description": "Suffix for output files (default: _cleaned)"
-                },
-                "rm_svs_label": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Boolean indicating whether to remove the label image in SVS files (default: true)"
-                },
-                "rm_svs_macro": {
-                    "type": "boolean",
-                    "description": "Boolean indicating whether to remove the macro image in SVS files (default: true)"
-                },
-                "rm_ome_sa": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Boolean indicating whether to remove structural annotations in OME-XML files (default: true)"
-                }
-            }
+        "outdir": {
+          "type": "string",
+          "format": "directory-path",
+          "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
+          "fa_icon": "fas fa-folder-open",
+          "help_text": ""
         }
+      }
     },
-    "allOf": [
-        {
-            "$ref": "#/definitions/input_output_options"
+    "pipeline_options": {
+      "title": "Pipeline options",
+      "type": "object",
+      "description": "",
+      "default": "",
+      "properties": {
+        "outsuffix": {
+          "type": "string",
+          "default": "_cleaned",
+          "description": "Suffix for output files (default: _cleaned)"
         },
-        {
-            "$ref": "#/definitions/pipeline_options"
+        "rm_svs_label": {
+          "type": "boolean",
+          "default": true,
+          "description": "Boolean indicating whether to remove the label image in SVS files (default: true)"
+        },
+        "rm_svs_macro": {
+          "type": "boolean",
+          "description": "Boolean indicating whether to remove the macro image in SVS files (default: true)"
+        },
+        "rm_ome_sa": {
+          "type": "boolean",
+          "default": true,
+          "description": "Boolean indicating whether to remove structural annotations in OME-XML files (default: true)"
         }
-    ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/input_output_options"
+    },
+    {
+      "$ref": "#/definitions/pipeline_options"
+    }
+  ]
 }

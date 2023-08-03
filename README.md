@@ -1,25 +1,31 @@
 # nf-imagecleaner
+
 The nf-imagecleaner is a Nextflow pipeline that prepares images for upload by removing sensitive data. This includes `AcquisitionDate` and `StructuredAnnotations` from OME-TIFF files, label images and `Date` from SVS files, and specified metadata tags from TIFFs. It handles Synapse URIs, local file paths, and mixtures of both in its input samplesheet.
 
 ### Requirements
+
 - Nextflow
 - Python 3.x with the following packages:
-  - `tifftools` 
-  - `ome_types` 
+  - `tifftools`
+  - `ome_types`
   - `synapseclient`
 
 ### Usage
+
 Clone the GitHub repository:
+
 ```
 git clone https://github.com/ncihtan/nf-imagecleaner.git
 ```
 
 Move into the directory:
+
 ```
 cd nf-imagecleaner
 ```
 
 To run the pipeline with default parameters, use:
+
 ```
 nextflow run main.nf --input <path/to/samplesheet.csv>
 ```
@@ -29,6 +35,7 @@ nextflow run main.nf --input <path/to/samplesheet.csv>
 The input to the pipeline is a CSV file (specified with `--input`) where the `image` column contains paths to images. If the path is a Synapse URL (starts with `syn://`), this file will be downloaded from Synapse.
 
 For example:
+
 ```
 image
 syn://syn00123
@@ -49,9 +56,10 @@ The cleaned images will be placed in the directory specified by `--outdir`.
 
 ### Metadata Redaction
 
-The specific tags removed are: 
+The specific tags removed are:
 
 for TIFFs:
+
 - DateTime
 - NDPI_ScanTime
 - NDPI_WriteTime
@@ -65,6 +73,7 @@ for TIFFs:
 - Software
 
 for SVSs:
+
 - Date
 - Time Zone
 - ScanScope ID
@@ -73,6 +82,7 @@ for SVSs:
 - DSR ID
 
 for OME-TIFFs:
+
 - Whole StructuredAnnotations block
 - Experimenter's e-mail, first name, and last name
 - AcquisitionDate
