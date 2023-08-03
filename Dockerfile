@@ -20,9 +20,9 @@ RUN pip install "poetry==$POETRY_VERSION" \
 ### Final stage
 FROM python:3.11-slim as final
 
-WORKDIR /app
+WORKDIR /
 
-COPY --from=build /app/requirements.txt .
+COPY --from=build /requirements.txt .
 
 RUN set -ex \
     # Create a non-root user
