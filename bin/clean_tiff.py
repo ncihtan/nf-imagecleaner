@@ -29,7 +29,7 @@ new_filename = f"{basename}{args.suffix}{all_ext}"
 print(new_filename)
 
 
-unest_list = [
+unset_list = [
     "DateTime",
     "NDPI_ScanTime",
     "NDPI_WriteTime",
@@ -41,12 +41,14 @@ unest_list = [
     "MDPrepDate",
     "MDSampleInfo",
     "Software",
+    "45278",
+    "45279",
+    "45494"
 ]
 
 tifftools.tiff_set(
     args.input,
     output=new_filename,
     overwrite=False,
-    unset=unest_list,
-    # setlist=set_list
+    unset=unset_list
 )
