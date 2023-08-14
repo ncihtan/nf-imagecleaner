@@ -5,10 +5,7 @@ The nf-imagecleaner is a Nextflow pipeline that prepares images for upload by re
 ### Requirements
 
 - Nextflow
-- Python 3.x with the following packages:
-  - `tifftools`
-  - `ome_types`
-  - `synapseclient`
+- Docker
 
 ### Usage
 
