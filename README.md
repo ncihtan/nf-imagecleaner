@@ -21,10 +21,10 @@ Move into the directory:
 cd nf-imagecleaner
 ```
 
-To run the pipeline with default parameters, use:
+To run the pipeline with default parameters and docker (recommended), use:
 
 ```
-nextflow run main.nf --input <path/to/samplesheet.csv>
+nextflow run main.nf --input <path/to/samplesheet.csv> --profile docker
 ```
 
 ### Inputs
