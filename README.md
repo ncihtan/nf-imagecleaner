@@ -9,22 +9,10 @@ The nf-imagecleaner is a Nextflow pipeline that prepares images for upload by re
 
 ### Usage
 
-Clone the GitHub repository:
-
-```
-git clone https://github.com/ncihtan/nf-imagecleaner.git
-```
-
-Move into the directory:
-
-```
-cd nf-imagecleaner
-```
-
 To run the pipeline with default parameters and docker (recommended), use:
 
 ```
-nextflow run main.nf --input <path/to/samplesheet.csv> --profile docker
+nextflow run ghcr.io/ncihtan/nf-imagecleaner --input <path/to/samplesheet.csv> --profile docker
 ```
 
 ### Inputs
