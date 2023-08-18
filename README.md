@@ -12,7 +12,7 @@ The nf-imagecleaner is a Nextflow pipeline that prepares images for upload by re
 To run the pipeline with default parameters and docker (recommended), use:
 
 ```
-nextflow run ghcr.io/ncihtan/nf-imagecleaner --input <path/to/samplesheet.csv> --profile docker
+nextflow run ncihtan/nf-imagecleaner --input <path/to/samplesheet.csv> --profile docker
 ```
 
 ### Inputs
