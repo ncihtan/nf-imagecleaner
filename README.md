@@ -25,6 +25,7 @@ For example:
 image
 syn://syn00123
 /local/path/to/image.svs
+s3://my-bucket/my-image.ome.tiff
 ```
 
 ### Parameters
