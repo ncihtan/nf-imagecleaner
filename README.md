@@ -2,6 +2,12 @@
 
 The nf-imagecleaner is a Nextflow pipeline that prepares images for upload by removing sensitive data. This includes `AcquisitionDate` and `StructuredAnnotations` from OME-TIFF files, label images and `Date` from SVS files, and specified metadata tags from TIFFs. It handles Synapse URIs, local file paths, and mixtures of both in its input samplesheet.
 
+[![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A523.04.0-23aa62.svg)](https://www.nextflow.io/) 
+[![Launch on Nextflow Tower](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Nextflow%20Tower-%234256e7)](https://tower.nf/launch?pipeline=https://github.com/ncihtan/nf-imagecleaner) 
+[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/) 
+[![GitHub Actions CI Status](https://github.com/ncihtan/nf-imagecleaner/workflows/ci/badge.svg)](https://github.com/ncihtan/nf-imagecleaner/actions?query=workflow%3A%22ci%22) 
+
+
 ### Requirements
 
 - Nextflow
