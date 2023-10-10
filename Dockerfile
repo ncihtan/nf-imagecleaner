@@ -25,3 +25,8 @@ RUN set -ex \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /opt \
+	&& wget http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip \
+	&& unzip bftools.zip -x '*.bat' -d /opt/ \
+	&& rm /var/cache/apk/* \
+    && PATH=$PATH:/opt/bftools/
