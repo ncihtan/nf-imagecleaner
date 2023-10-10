@@ -19,6 +19,7 @@ RUN set -ex \
     && apt-get upgrade -y \
     # Install dependencies
     && apt-get install procps -y \
+    && apt-get install wget -y \
     && pip install -r requirements.txt \
     # Clean up
     && apt-get autoremove -y \
