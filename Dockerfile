@@ -29,5 +29,4 @@ RUN set -ex \
 
 RUN wget http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip \
 	&& unzip bftools.zip -x '*.bat' -d /opt/ \
-	&& rm /var/cache/apk/* \
     && PATH=$PATH:/opt/bftools/
