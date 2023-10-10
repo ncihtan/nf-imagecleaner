@@ -28,5 +28,4 @@ RUN set -ex \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget http://downloads.openmicroscopy.org/latest/bio-formats7.0/artifacts/bftools.zip \
-	&& unzip bftools.zip -x '*.bat' -d /opt/ \
-    && PATH=$PATH:/opt/bftools/
+	&& unzip bftools.zip -x '*.bat' -d /usr/local/bin/
