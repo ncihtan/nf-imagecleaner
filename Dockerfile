@@ -20,6 +20,7 @@ RUN set -ex \
     # Install dependencies
     && apt-get install procps -y \
     && apt-get install wget -y \
+    && apt-get install unzip -y \
     && pip install -r requirements.txt \
     # Clean up
     && apt-get autoremove -y \
