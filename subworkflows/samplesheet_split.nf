@@ -41,6 +41,7 @@ workflow SAMPLESHEET_SPLIT {
             .branch {
                 ome: it[1] =~ /.+\.ome\.tif{1,2}$/
                 svs: it[1] =~ /.+\.svs$/
+                qptiff: it[1] =~ /.+\.qptiff$/
                 other: true
             }
             .set{ images }
@@ -48,5 +49,6 @@ workflow SAMPLESHEET_SPLIT {
     emit:
         ome = images.ome
         svs = images.svs
+        qptiff = images.qptiff
         other = images.other
 }
