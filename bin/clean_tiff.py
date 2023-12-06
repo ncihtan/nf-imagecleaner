@@ -29,7 +29,7 @@ new_filename = f"{basename}{args.suffix}{all_ext}"
 print(new_filename)
 
 
-unset_list = [
+base_unset_list = [
     "DateTime",
     "NDPI_ScanTime",
     "NDPI_WriteTime",
@@ -46,9 +46,18 @@ unset_list = [
     "45494"
 ]
 
+info = tifftools.read_tiff(args.input)
+num_ifds = len(info['ifds'])
+
+unset_list_for_all_ifds = []
+for ifd in range(num_ifds):
+    unset_list_for_ifd = [f"{tag},{ifd}" for tag in base_unset_list]
+    unset_list_for_all_ifds.extend(unset_list_for_ifd)
+
+# Call tiff_set only once after all IFD modifications are specified
 tifftools.tiff_set(
     args.input,
     output=new_filename,
     overwrite=False,
-    unset=unset_list
+    unset=unset_list_for_all_ifds
 )
