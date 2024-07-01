@@ -2,7 +2,7 @@ process clean_tiff {
   input:
     tuple val(meta), file(image)
   output:
-    tuple val(meta), file('*_cleaned*')
+    tuple val(meta), file('*$params.outsuffix*')
   publishDir "$params.outdir/", mode: 'copy', overwrite: true
   stub:
   """
