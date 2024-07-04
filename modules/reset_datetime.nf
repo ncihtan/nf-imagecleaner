@@ -10,6 +10,6 @@ process reset_datetime {
   """
   script:
   """
-  reset_datetime.py $image "1970:01:01 00:00:00"
+  reset_datetime.py $image --datetags $params.datetags
   """
 }
