@@ -19,17 +19,18 @@ def parse_args():
     )
     parser.add_argument("image_path", help="TIFF file to process")
     parser.add_argument(
-        "--date_tags",
-        help="Comma-separated list of tags (integer ids) with dates to replace (default: 306)",
-        type=list_of_ints,
+        "--datetags",
+        help="Space-separated list of tags (integer ids) with dates to replace (default: 306)",
+        nargs="+",
+        type=int,
         default=[306],
     )
     parser.add_argument(
         "--datetime",
         help="YYYY:MM:DD HH:MM:SS string to replace all DateTime values."
-        " Note the use of colons in the date, as required by the TIFF standard.",
+        " Note the use of colons in the date, as required by the TIFF standard."
+        " Default: 1970:01:01 00:00:00 (start of Unix epoch).",
         type=str,
-        # Defaults to the start of the unix epoch
         default="1970:01:01 00:00:00",
     )
     argv = sys.argv[1:]
@@ -49,6 +50,17 @@ def main():
         tiff = tiffsurgeon.TiffSurgeon(
             args.image_path, encoding="utf-8", writeable=True
         )
+        tiff.read_ifds()
+    except (tiffsurgeon.FormatError, UnicodeDecodeError) as e:
+        print(f"TIFF format or encoding error: {e}. Trying with Latin-1 encoding.")
+        try:
+            tiff = tiffsurgeon.TiffSurgeon(
+                args.image_path, encoding="latin-1", writeable=True
+            )
+            tiff.read_ifds()
+        except tiffsurgeon.FormatError as e:
+            print(f"Error reading IFDs: {e}")
+            sys.exit(1)
     except tiffsurgeon.FormatError as e:
         print(f"TIFF format error: {e}")
         sys.exit(1)
@@ -62,7 +74,7 @@ def main():
 
     tiff.read_ifds()
 
-    for tag in args.date_tags:
+    for tag in args.datetags:
         if not any(tag in i.tags for i in tiff.ifds):
             print(f"Tag {tag} not found in {args.image_path} -- file not modified")
             sys.exit(1)
